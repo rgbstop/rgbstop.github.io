@@ -17,15 +17,14 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
 	<script>
-	function showRGB(){hexcode="#";for(x=0;x<3;x++){;var n=document.getElementsByName("r1e")[x].value;if(n=="")n="0";if(parseInt(n)!=n)return alert("请输入数字！");if(n>255)return alert("数字在0-255之间！");var c="0123456789ABCDEF", b="", a=n%16;b=c.substr(a,1);a=(n-a)/16;hexcode+=c.substr(a,1)+b}document.getElementById("clr1").bgColor=dsp1.innerHTML=hexcode}
-	function showRGB2(){var a=document.getElementsByName("rgb2")[0].value;if(a.substr(0,1)=="#")a=a.substring(1);var len=a.length;if(len!=6&&len!=3)return alert("十六进制颜色码为六位或三位！");else if(/[^0-9a-f]/i.test(a))return alert("请输入正确的十六进制颜色码！");document.getElementById("clr2").bgColor="#"+a;a=a.toLowerCase();b=new Array();for(x=0;x<3;x++){b[0]=len==6?a.substr(x*2,2):a.substr(x*1,1)+a.substr(x*1,1);b[3]="0123456789abcdef";b[1]=b[0].substr(0,1);b[2]=b[0].substr(1,1);b[20+x]=b[3].indexOf(b[1])*16+b[3].indexOf(b[2])}dsp2.innerHTML=b[20]+","+b[21]+","+b[22];}
+	function showRGB(){hexcode="#";for(x=0;x<3;x++){;var n=document.getElementsByName("r1e")[x].value;if(n=="")n="0";if(parseInt(n)!=n)return alert("请输入数字！");if(n>255)return alert("数字在0-255之间！");var c="0123456789ABCDEF", b="", a=n%16;b=c.substr(a,1);a=(n-a)/16;hexcode+=c.substr(a,1)+b}dsp1.style.backgroundColor=dsp1.innerHTML=hexcode}
+	function showRGB2(){var a=document.getElementsByName("rgb2")[0].value;if(a.substr(0,1)=="#")a=a.substring(1);var len=a.length;if(len!=6&&len!=3)return alert("十六进制颜色码为六位或三位！");else if(/[^0-9a-f]/i.test(a))return alert("请输入正确的十六进制颜色码！");dsp2.style.backgroundColor="#"+a;a=a.toLowerCase();b=new Array();for(x=0;x<3;x++){b[0]=len==6?a.substr(x*2,2):a.substr(x*1,1)+a.substr(x*1,1);b[3]="0123456789abcdef";b[1]=b[0].substr(0,1);b[2]=b[0].substr(1,1);b[20+x]=b[3].indexOf(b[1])*16+b[3].indexOf(b[2])}dsp2.innerHTML=b[20]+","+b[21]+","+b[22];}
 	function getkey(e,n){var keynum;if(window.event)keynum=e.keyCode;else if(e.which)keynum=e.which;if(keynum==13){if(n==0)showRGB();else showRGB2();}}
 	</script>
  </head>
 <body><div class="container-fluid">
  <div class="row">
     <div class="col-md-10 offset-md-1">
-
 <nav class="navbar navbar-expand-lg  navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><h1>RGB色码</h1></a>
@@ -40,57 +39,57 @@
         <li class="nav-item">
           <a class="nav-link" target="_blank" href="http://unixetc.com">UNIXETC</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">###</a>
-        </li>
+&nbsp;&nbsp;
+<div class="spinner-grow text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-success" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-danger" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-warning" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-dark" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
       </ul>
     </div>
   </div>
 </nav>
-</div></div>
+<hr/>
+<h2>RGB/HEX转换</h2></div></div>
 <div class="row"> 
-<div class="col-md-10 offset-md-1">
-     <table class="table"> 
-          <tbody>
-            <tr>
-              <td><div>RGB->HexCode：</div>
-                <table border="0" cellpadding="0" cellspacing="4">
-                  <tbody>
-                    <tr>
-                      <td width="200">
-                        <input name="r1e" value="255" class="rle" maxlength="3" onKeyDown="getkey(event,0);">
-                        <input name="r1e" value="180" class="rle" maxlength="3" onKeyDown="getkey(event,0);">
-                        <input name="r1e" value="0" class="rle" maxlength="3" onKeyDown="getkey(event,0);">
-                        <input onclick="showRGB()" type="button" value="转换" name="button">
-                      </td>
-                      <td id="clr1" width="50"></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="dsp1">　</div></td>
-            </tr>
-            <tr>
-              <td><div>HexCode->RGB：</div>
-                <table border="0" cellpadding="0" cellspacing="4">
-                  <tbody>
-                    <tr>
-                      <td width="200">
-                        <input name="rgb2" value="#CC00FF" size="8" maxlength="7" onKeyDown="getkey(event,1);">
-                        <input onclick="showRGB2()" type="button" value="转换" name="button">
-                      </td>
-                      <td id="clr2" width="50"></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div id="dsp2">　</div></td>
-            </tr>
-          </tbody>
-      </table>
-  </div></div>
-
+<div class="col-md-4 offset-md-1">
+<div class="input-group">
+	<span class="input-group-text"><strong>RGB转换HEX</strong></span>
+	<input type="text" class="form-control" name="r1e" value="100" onKeyDown="getkey(event,0);">
+	<input type="text" class="form-control" name="r1e" value="150" onKeyDown="getkey(event,0);">
+	<input type="text" class="form-control" name="r1e" value="255" onKeyDown="getkey(event,0);">
+	<button class="btn btn-outline-secondary" type="button" onclick="showRGB()">显示</button>
+</div></div>
+<div class="col-md-1"><div id="dsp1" class="alert alert-light" role="alert"></div></div>
+</div>
+<div class="row"> 
+<div class="col-md-4 offset-md-1">
+<div class="input-group">
+	<span class="input-group-text"><strong>HEX转换RGB</strong></span>
+	<input type="text" class="form-control" name="rgb2" value="#CC00FF" size="8" maxlength="7" onKeyDown="getkey(event,1);">
+	<button class="btn btn-outline-secondary" type="button" onclick="showRGB2()">显示</button>
+</div></div>
+<div class="col-md-1"><div id="dsp2" class="alert alert-light" role="alert"></div></div>
+</div>
 <div class="row"><div class="col-md-10 offset-md-1">
 <!-- <table class="table-bordered caption-top" style="width:99%"> -->
-<table class="table table-bordered caption-top">
+<table class="table table-bordered caption-top table-hover table-sm">
 <caption><h2>常用颜色色码</h2></caption>
 	<thead>
 	        <tr >
@@ -613,7 +612,6 @@
             <td>#006400</td>
             <td>0,100,0</td>
         </tr>
-
         <tr>
             <td style="background-color:#7fff00">　</td>
             <td>Chartreuse</td>
@@ -1061,8 +1059,9 @@
 <div class="row"><div class="col-md-10 offset-md-1">
 <footer><small>
 &copy; <a href="http://unixetc.com">UNIXETC</a><script type="text/javascript" src="https://js.users.51.la/21067471.js"></script>
-</small></footer>
+</small>
+</footer>
 </div></div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script src="./bootstrap.bundle.min.js"></script>
 </body>
 </html>
